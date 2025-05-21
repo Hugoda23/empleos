@@ -1,0 +1,5 @@
+.logo-img {
+    max-width: 100%; /* Ajusta el ancho al 100% del contenedor */
+    height: auto; /* Mantiene la relación de aspecto */
+    width: 1000px; /* Puedes ajustar este valor según el tamaño deseado */
+}
