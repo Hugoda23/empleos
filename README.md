@@ -1,6 +1,16 @@
-# Nombre del Proyecto
+# Bolsa de Trabajo
 
-Breve descripción del proyecto y su propósito.
+Este es un proyecto de Bolsa de Trabajo desarrollado con Laravel y Vue.js.
+Con este proyecto, puedes gestionar las vacantes de trabajo, aplicaciones de los usuarios y el proceso de selección.
+con el objetivo de facilitar el proceso de selección de candidatos.
+
+## Características
+
+- Gestión de vacantes de trabajo.
+- Aplicación de candidatos a las vacantes.
+- Proceso de selección de candidatos.
+- Interfaz de usuario intuitiva y fácil de usar.
+
 
 ## Requisitos Previos
 
