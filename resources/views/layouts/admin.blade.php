@@ -127,19 +127,6 @@
             </a>
         </li>
 
-         <li class="nav-item">
-            <a href="{{ route('admin.notificaciones_empresas.index') }}" class="nav-link">
-              <i class="bi bi-bell-fill"></i>
-              <p>Notificaciones</p>
-            </a>
-          </li>
-
-           <li class="nav-item">
-            <a href="{{ route('admin.estado_vacantes.index') }}" class="nav-link">
-              <i class="bi bi-reception-4"></i>
-              <p>Estado de Vacantes</p>
-            </a>
-          </li>
  <!-- Usuarios -->
 <li class="nav-item">
             <a href="{{ route('admin.empleos.index') }}" class="nav-link">

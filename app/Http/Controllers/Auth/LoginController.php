@@ -17,15 +17,28 @@ class LoginController extends Controller
     {
         $credentials = $request->validate([
             'correo_electronico' => 'required|email',
-            'contrasena' => 'required',
+            'password' => 'required',
         ]);
 
         if (Auth::attempt([
             'correo_electronico' => $credentials['correo_electronico'],
-            'contrasena' => $credentials['contrasena']
+            'password' => $credentials['password']
         ])) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            
+            $user = Auth::user();
+            $rol = $user->rol->nombre_rol;
+
+            switch ($rol) {
+                case 'Administrador':
+                    return redirect()->route('admin.index');
+                case 'Reclutador':
+                    return redirect()->route('dashboard.empleos_publicados.index');
+                case 'Candidato':
+                    return redirect()->route('dashboard.empleos.index');
+                default:
+                    return redirect('/');
+            }
         }
 
         return back()->withErrors([
@@ -38,6 +51,6 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/admin');
+        return redirect('/');
     }
 }

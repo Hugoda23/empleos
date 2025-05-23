@@ -9,6 +9,11 @@ class RoleSeeder extends Seeder
 {
     public function run()
     {
+        // Limpiar las tablas antes de insertar datos
+        DB::table('roles_permisos')->truncate();
+        DB::table('permisos')->truncate();
+        DB::table('roles')->truncate();
+
         // Crear roles usando la estructura existente de la base de datos
         $roles = [
             [

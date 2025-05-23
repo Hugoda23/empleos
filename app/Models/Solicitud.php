@@ -16,6 +16,7 @@ class Solicitud extends Model
         'id_vacante',
         'mensaje',
         'cv_url',
+        'estado', // Agrega la columna 'estado' aquí
     ];
 
     public function usuario()
