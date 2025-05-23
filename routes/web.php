@@ -29,12 +29,13 @@ Route::get('/', [WebController::class, 'index'])->name('index');
 // Registro (sin protección)
 Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
-
-// Login y logout (sin protección)
+// Rutas de autenticación
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
 
 //rutas admin
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');

@@ -9,10 +9,17 @@
     <input type="email" name="correo_electronico" placeholder="Correo electrónico" value="{{ old('correo_electronico') }}" required>
     @error('correo_electronico') <div>{{ $message }}</div> @enderror
 
-    <input type="password" name="password" placeholder="Contraseña" required>
-    @error('password') <div>{{ $message }}</div> @enderror
+    <input type="password" name="contrasena" placeholder="Contraseña" required>
+    @error('contrasena') <div>{{ $message }}</div> @enderror
 
-    <input type="password" name="password_confirmation" placeholder="Confirmar contraseña" required>
+    <input type="password" name="contrasena_confirmation" placeholder="Confirmar contraseña" required>
+
+    <select name="tipo_usuario" required>
+        <option value="">Seleccione tipo de usuario</option>
+        <option value="2">Reclutador</option>
+        <option value="3">Candidato</option>
+    </select>
+    @error('tipo_usuario') <div>{{ $message }}</div> @enderror
 
     <input type="text" name="telefono" placeholder="Teléfono (opcional)" value="{{ old('telefono') }}">
     @error('telefono') <div>{{ $message }}</div> @enderror

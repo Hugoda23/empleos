@@ -3,61 +3,47 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Usuario; 
-use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    // Mostrar formulario de registro
-    public function showRegisterForm()
+    public function showRegistrationForm()
     {
         return view('auth.register');
     }
 
-    // Registrar y redirigir según rol
     public function register(Request $request)
     {
-        $this->validator($request->all())->validate();
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|string|max:50',
+            'apellido' => 'required|string|max:50',
+            'correo_electronico' => 'required|string|email|max:100|unique:usuarios',
+            'contrasena' => 'required|string|min:8|confirmed',
+            'tipo_usuario' => 'required|in:2,3', // 2 para reclutador, 3 para candidato
+            'telefono' => 'nullable|string|max:20',
+        ]);
 
-        $user = $this->create($request->all());
-
-        Auth::login($user);
-
-        return $this->redirectToRol();
-    }
-
-    protected function redirectToRol()
-    {
-        switch (Auth::user()->rol) {
-            case 'admin':
-                return redirect()->route('admin.index');
-            case 'empresa':
-                return redirect()->route('admin.empresas.index');
-            case 'usuario':
-            default:
-                return redirect()->route('index');
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
         }
-    }
 
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:usuarios,email'], // ajusta si usas otra tabla
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        $usuario = Usuario::create([
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido,
+            'correo_electronico' => $request->correo_electronico,
+            'contrasena' => Hash::make($request->contrasena),
+            'id_rol' => $request->tipo_usuario,
+            'telefono' => $request->telefono,
+            'fecha_registro' => now(),
         ]);
-    }
 
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'rol' => $data['rol'] ?? 'usuario', // valor por defecto si no se envía desde el formulario
-        ]);
+        auth()->login($usuario);
+
+        return redirect('/admin');
     }
 }
