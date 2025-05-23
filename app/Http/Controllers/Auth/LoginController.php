@@ -17,22 +17,39 @@ class LoginController extends Controller
     {
         $request->validate([
             'correo_electronico' => 'required|email',
-            'password' => 'required|string',
+            'contrasena' => 'required|string',
         ]);
 
         $credentials = [
             'correo_electronico' => $request->correo_electronico,
-            'password' => $request->password,
+            'password' => $request->contrasena, // aquí estaba el error
         ];
 
-        if (Auth::attempt($credentials)) {
+        $remember = $request->has('remember');
+
+        if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
-            return redirect()->route('redirect.por.rol');
+            return $this->redirectToRol();
         }
 
         return back()->withErrors([
-            'correo_electronico' => 'Las credenciales no coinciden.',
+            'correo_electronico' => 'Correo electrónico o contraseña incorrectos.',
         ])->onlyInput('correo_electronico');
+    }
+
+    protected function redirectToRol()
+    {
+        $rol = Auth::user()->rol;
+
+        switch ($rol) {
+            case 'admin':
+                return redirect()->route('admin.index');
+            case 'empresa':
+                return redirect()->route('admin.empresas.index'); 
+            case 'usuario':
+            default:
+                return redirect()->route('index'); 
+        }
     }
 
     public function logout(Request $request)
@@ -40,6 +57,7 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
         return redirect('/login');
     }
 }

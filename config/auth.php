@@ -32,18 +32,13 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Usuario::class,
-        ],
-
-        // Si necesitas usar una base de datos directamente, puedes usar esta configuración también:
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'usuarios',
-        // ],
+   'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Usuario::class,
     ],
+],
+
 
     /*
     |--------------------------------------------------------------------------

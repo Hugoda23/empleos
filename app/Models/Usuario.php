@@ -4,22 +4,21 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Usuario extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use Notifiable;
 
-    // Nombre de la tabla personalizada
+    // Nombre de la tabla si no es 'usuarios'
     protected $table = 'usuarios';
 
     // Clave primaria personalizada
     protected $primaryKey = 'id_usuario';
 
-    // Laravel no usará automáticamente created_at ni updated_at
+    // Si no usas created_at y updated_at
     public $timestamps = false;
 
-    // Campos que se pueden asignar en masa
+    // Campos asignables (ajusta según tu tabla)
     protected $fillable = [
         'nombre',
         'apellido',
@@ -28,30 +27,24 @@ class Usuario extends Authenticatable
         'telefono',
         'id_rol',
         'usuario_modifica',
+        'fecha_registro',
         'fecha_modifica',
-        'fecha_registro'
     ];
 
-    // Oculta campos sensibles en respuestas JSON
-    protected $hidden = [
-        'contrasena',
-    ];
 
-    // Laravel utiliza este método para obtener el password
     public function getAuthPassword()
     {
         return $this->contrasena;
     }
 
-    // Relación con roles (opcional)
+   
     public function rol()
     {
         return $this->belongsTo(Rol::class, 'id_rol');
     }
-
-    // Relación con el usuario que modificó
-    public function modificador()
+    
+    public function notificaciones()
     {
-        return $this->belongsTo(Usuario::class, 'usuario_modifica');
+        return $this->hasMany(Notificacion::class, 'id_usuario');
     }
 }

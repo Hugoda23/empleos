@@ -14,7 +14,13 @@ class RedireccionRol
         }
 
         $usuario = Auth::user();
-        $rol = strtolower($usuario->rol->nombre_rol); // Asegúrate de tener relación rol() definida
+
+        // Verifica que la relación rol esté cargada y exista
+        if (!$usuario->rol) {
+            return redirect('/login')->with('error', 'No tiene rol asignado.');
+        }
+
+        $rol = strtolower($usuario->rol->nombre_rol);
 
         switch ($rol) {
             case 'admin':
@@ -26,5 +32,7 @@ class RedireccionRol
             default:
                 return redirect('/login')->with('error', 'Rol no reconocido.');
         }
+
+        
     }
 }

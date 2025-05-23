@@ -14,7 +14,12 @@
             <span class="navbar-brand">Sistema de Empleos</span>
             <div class="collapse navbar-collapse justify-content-end">
                 <span class="navbar-text text-white me-3">
-                    {{ Auth::user()->nombre }}
+                   @auth
+    <span class="navbar-text text-white me-3">
+        {{ Auth::user()->nombre }}
+    </span>
+@endauth
+
                 </span>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
