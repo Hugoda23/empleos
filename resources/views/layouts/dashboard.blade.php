@@ -79,22 +79,22 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview">
           <li class="nav-item">
-              <a href="{{ route('admin.vacantes') }}" class="nav-link">
+              <a href="{{ route('dashboard.vacantes') }}" class="nav-link">
               <i class="bi bi-table"></i>
               <p>Vacantes</p>
             </a>
           </li>
 
         <li class="nav-item">
-        <a href="{{ route('admin.empresas.index') }}" class="nav-link">
-          <i class="nav-icon fas fa-users-cog"></i>
-          <p>Empresas</p>
-        </a>
-      </li>
+  <a href="{{ route('dashboard.empresas.index') }}" class="nav-link">
+    <i class="nav-icon fas fa-users-cog"></i>
+    <p>Empresas</p>
+  </a>
+</li>
 
 
           <li class="nav-item">
-            <a href="{{ route('admin.notificaciones.index') }}" class="nav-link">
+            <a href="{{ route('dashboard.notificaciones.index') }}" class="nav-link">
               <i class="bi bi-bell-fill"></i>
               <p>Notificaciones</p>
             </a>
@@ -103,7 +103,7 @@
           <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview">
           <li class="nav-item">
-            <a href="{{ route('admin.graficos.index') }}" class="nav-link">
+            <a href="{{ route('dashboard.graficos.index') }}" class="nav-link">
               <i class="bi bi-graph-up"></i>
               <p>Graficos</p>
             </a>
@@ -113,7 +113,7 @@
   <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview">
         <li class="nav-item">
-            <a href="{{ route('admin.empleos_publicados.index') }}" class="nav-link">
+            <a href="{{ route('dashboard.empleos_publicados.index') }}" class="nav-link">
                 <i class="bi bi-megaphone-fill"></i>
                 <p>Empleos Publicados</p>
             </a>
@@ -121,7 +121,7 @@
         <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview">
         <li class="nav-item">
-            <a href="{{ route('admin.solicitudes.index') }}" class="nav-link">
+            <a href="{{ route('dashboard.solicitudes.index') }}" class="nav-link">
                 <i class="bi bi-journal-check"></i>
                 <p>Solicitudes</p>
             </a>
@@ -129,27 +129,27 @@
 
  <!-- Usuarios -->
 <li class="nav-item">
-            <a href="{{ route('admin.empleos.index') }}" class="nav-link">
+            <a href="{{ route('dashboard.empleos.index') }}" class="nav-link">
               <i class="bi bi-clipboard-minus-fill"></i>
               <p>Empleos</p>
             </a>
           </li>
 
 <li class="nav-item">
-            <a href="{{ route('admin.empresas_usuarios.index') }}" class="nav-link">
+            <a href="{{ route('dashboard.empresas_usuarios.index') }}" class="nav-link">
               <i class="nav-icon fas fa-users-cog"></i>
               <p>Empresas</p>
             </a>
           </li>
 
              <li class="nav-item">
-            <a href="{{ route('admin.notificaciones_usuarios.index') }}" class="nav-link">
+            <a href="{{ route('dashboard.notificaciones_usuarios.index') }}" class="nav-link">
               <i class="bi bi-bell-fill"></i>
               <p>Notificaciones</p>
             </a>
           </li>
              <li class="nav-item">
-            <a href="{{ route('admin.solicitudes_usuarios.index') }}" class="nav-link">
+            <a href="{{ route('dashboard.solicitudes_usuarios.index') }}" class="nav-link">
               <i class="bi bi-bell-fill"></i>
               <p>Solicitudes</p>
             </a>
@@ -158,7 +158,7 @@
                  <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview">
           <li class="nav-item">
-            <a href="{{ route('admin.ajustes.index') }}" class="nav-link">
+            <a href="{{ route('dashboard.ajustes.index') }}" class="nav-link">
               <i class="bi bi-wrench-adjustable"></i>
               <p>Ajustes</p>
             </a>

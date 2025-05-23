@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use App\Models\Solicitud;
+use App\Models\Notificacion;
 
 class NotificacionesUsuariosController extends Controller
 {

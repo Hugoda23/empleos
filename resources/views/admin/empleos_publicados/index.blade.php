@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<a href="{{ route('admin.empleos_publicados.create') }}" class="btn btn-primary mb-3">+ Publicar Nueva Vacante</a>
+<a href="{{ route('dashboard.empleos_publicados.create') }}" class="btn btn-primary mb-3">+ Publicar Nueva Vacante</a>
 <div class="container">
     <h2 class="mb-4">Empleos Publicados</h2>
 
